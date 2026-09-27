@@ -1,8 +1,0 @@
-{
-  "schema_version": "hatch.probe_ui_session.v1",
-  "socket": "/home/hatch/workspace/ts-spaces/portfolio/.harness/probe-ui/sock",
-  "slug": "portfolio",
-  "url": "https://artifact-capture.invalid/spaces/v2/hatch-audit-5f94d4ce-234b-4c6b-8bbc-11e69d7e3457/",
-  "audit_session_id": "529d1e85-e931-4964-9668-524d24682e7a",
-  "pid": 6192
-}
