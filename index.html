@@ -163,56 +163,32 @@
     }
     h2 { margin: 0 0 30px; font-size: clamp(30px, 4vw, 54px); line-height: 1; letter-spacing: -.045em; }
     .lead { max-width: 730px; margin: 0 0 40px; color: var(--muted); font-size: 20px; }
-    .work-list { border-top: 1px solid var(--line); }
-    .work-item {
+    .portfolio-cards {
       display: grid;
-      grid-template-columns: 150px minmax(0, 1fr);
-      gap: 34px;
-      padding: 28px 0;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
     }
-    .work-item:last-child { border-bottom: 0; }
-    .work-key { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
-    .work-copy h3 { margin: -3px 0 8px; font-size: 22px; letter-spacing: -.025em; }
-    .work-copy p { max-width: 720px; margin: 0; color: var(--muted); }
-    .work-copy a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 14px;
-      color: var(--accent-ink);
+    .portfolio-card {
+      display: block;
+      padding: 34px 28px 32px 0;
+      text-decoration: none;
+      border-right: 1px solid var(--line);
+    }
+    .portfolio-card + .portfolio-card { padding-left: 28px; }
+    .portfolio-card:last-child { border-right: 0; }
+    .portfolio-card .card-key { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--accent); }
+    .portfolio-card h3 { margin: 14px 0 10px; font-size: clamp(26px, 3vw, 34px); letter-spacing: -.03em; }
+    .portfolio-card p { margin: 0 0 20px; color: var(--muted); }
+    .portfolio-card .go {
       font-family: "IBM Plex Mono", monospace;
       font-size: 12px;
       font-weight: 500;
+      color: var(--accent-ink);
       text-underline-offset: 4px;
     }
-    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
-    .skill-block { min-height: 250px; padding: 28px 28px 30px 0; border-bottom: 1px solid var(--line); }
-    .skill-block:nth-child(odd) { border-right: 1px solid var(--line); }
-    .skill-block:nth-child(even) { padding-left: 28px; }
-    .skill-block h3 { margin: 0 0 20px; font-size: 22px; }
-    .skill-block ul { display: grid; gap: 11px; margin: 0; padding: 0; list-style: none; color: var(--muted); }
-    .skill-block li { position: relative; padding-left: 18px; }
-    .skill-block li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
-    .path {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border-top: 1px solid var(--line);
-    }
-    .path-card { padding: 28px 28px 0 0; }
-    .path-card + .path-card { padding-left: 28px; border-left: 1px solid var(--line); }
-    .path-card .date { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--accent); }
-    .path-card h3 { margin: 12px 0 8px; font-size: 25px; letter-spacing: -.03em; }
-    .path-card p { margin: 0; color: var(--muted); }
-    .profile-statement {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(230px, .5fr);
-      gap: 40px;
-      align-items: end;
-      padding: 62px 0 14px;
-    }
-    .profile-statement blockquote { margin: 0; font-size: clamp(27px, 4vw, 49px); line-height: 1.15; letter-spacing: -.045em; font-weight: 600; }
-    .profile-statement aside { padding-left: 24px; border-left: 1px solid var(--line); color: var(--muted); }
+    .portfolio-card:hover h3 { color: var(--accent); }
+    .portfolio-card:hover .go { text-decoration: underline; }
     footer {
       display: flex;
       justify-content: space-between;
@@ -239,14 +215,10 @@
       .metric:nth-child(3) { padding-left: 0; }
       .section { grid-template-columns: 1fr; gap: 20px; padding: 54px 0; }
       .section-label { position: static; }
-      .work-item { grid-template-columns: 1fr; gap: 9px; }
-      .skills-grid, .path { grid-template-columns: 1fr; }
-      .skill-block:nth-child(odd) { border-right: 0; }
-      .skill-block:nth-child(even) { padding-left: 0; }
-      .path-card { padding: 26px 0; border-bottom: 1px solid var(--line); }
-      .path-card + .path-card { padding-left: 0; border-left: 0; border-bottom: 0; }
-      .profile-statement { grid-template-columns: 1fr; }
-      .profile-statement aside { max-width: 420px; }
+      .portfolio-cards { grid-template-columns: 1fr; }
+      .portfolio-card { border-right: 0; border-bottom: 1px solid var(--line); padding: 26px 0; }
+      .portfolio-card + .portfolio-card { padding-left: 0; }
+      .portfolio-card:last-child { border-bottom: 0; }
       footer { align-items: flex-end; }
     }
     @media (max-width: 420px) {
@@ -255,7 +227,6 @@
       .metric, .metric + .metric { padding: 20px 0; border-right: 0; border-bottom: 1px solid var(--line); }
       .metric:nth-child(3) { border-bottom: 1px solid var(--line); }
       .metric:last-child { border-bottom: 0; }
-      .skill-block { min-height: 0; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
@@ -265,9 +236,9 @@
     <div class="rail" aria-label="Page navigation">
       <strong>Bilal Ahmad</strong>
       <nav>
-        <a href="#work">Selected work</a>
-        <a href="#capabilities">Capabilities</a>
-        <a href="#background">Background</a>
+        <a href="engineering/">Engineering</a>
+        <a href="marketing/">Marketing</a>
+        <a href="academic/">Academic</a>
       </nav>
     </div>
 
@@ -288,116 +259,36 @@
     <div class="metrics" aria-label="Profile highlights">
       <div class="metric"><b>4</b><span>connected disciplines</span></div>
       <div class="metric"><b>3 yrs</b><span>IT work experience</span></div>
-      <div class="metric"><b>B.Eng</b><span>Electrical Engineering</span></div>
+      <div class="metric"><b>B.Sc. EE</b><span>Electrical Engineering, UET Peshawar</span></div>
       <div class="metric"><b>PEC</b><span>registered engineer</span></div>
     </div>
 
-    <section class="section" id="work">
-      <p class="section-label">02 / SELECTED WORK</p>
+    <section class="section" id="portfolios">
+      <p class="section-label">02 / PORTFOLIOS</p>
       <div>
-        <h2>Practical systems,<br>not slideware.</h2>
-        <p class="lead">My work sits where acquisition, operations, and technical problem-solving meet.</p>
-        <div class="work-list">
-          <article class="work-item">
-            <div class="work-key">ECOMMERCE<br>OPERATIONS</div>
-            <div class="work-copy">
-              <h3>COD cash-flow control for a Shopify store</h3>
-              <p>Built an operating view that connects orders, courier settlements, stock purchases, ad spend, returns, and agent performance—making the gap between reported profit and cash visible.</p>
-              <a href="https://blumora.pk/pages/hismile-offer" target="_blank" rel="noopener noreferrer">View offer page <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-          <article class="work-item">
-            <div class="work-key">META ADS<br>&amp; CREATIVE</div>
-            <div class="work-copy">
-              <h3>Full-funnel paid social thinking</h3>
-              <p>Campaign structure, audience and creative testing, ad copy, offer framing, and performance diagnosis across CPM, CTR, CPC, cost per result, and ROAS.</p>
-            </div>
-          </article>
-          <article class="work-item">
-            <div class="work-key">ENGINEERING<br>&amp; IOT</div>
-            <div class="work-copy">
-              <h3>Communication systems and connected devices</h3>
-              <p>Engineering foundation across communication systems, control systems, and IoT, including an academic CISNR project built around an E. coli monitoring use case.</p>
-            </div>
-          </article>
-          <article class="work-item">
-            <div class="work-key">IT<br>SUPPORT</div>
-            <div class="work-copy">
-              <h3>Technical support with an operator’s mindset</h3>
-              <p>Three years of IT work experience, combining structured troubleshooting, clear communication, and reliable follow-through.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="capabilities">
-      <p class="section-label">03 / CAPABILITIES</p>
-      <div>
-        <h2>One operator.<br>Four lenses.</h2>
-        <div class="skills-grid">
-          <article class="skill-block">
-            <h3>Paid social</h3>
-            <ul>
-              <li>Meta campaign structure</li>
-              <li>Creative angles and ad copy</li>
-              <li>Testing plans and performance analysis</li>
-              <li>CPM, CTR, CPC, CPA and ROAS diagnosis</li>
-            </ul>
-          </article>
-          <article class="skill-block">
-            <h3>Ecommerce</h3>
-            <ul>
-              <li>Shopify offer and product-page thinking</li>
-              <li>COD order economics</li>
-              <li>Courier payout and return tracking</li>
-              <li>Inventory, agent and cash reconciliation</li>
-            </ul>
-          </article>
-          <article class="skill-block">
+        <h2>Three lenses.<br>One operator.</h2>
+        <p class="lead">Pick the portfolio written for your world.</p>
+        <div class="portfolio-cards">
+          <a class="portfolio-card" href="engineering/">
+            <span class="card-key">A / ENGINEERING</span>
             <h3>Engineering</h3>
-            <ul>
-              <li>Communication systems</li>
-              <li>Control systems</li>
-              <li>IoT systems</li>
-              <li>Structured technical analysis</li>
-            </ul>
-          </article>
-          <article class="skill-block">
-            <h3>IT</h3>
-            <ul>
-              <li>Technical troubleshooting</li>
-              <li>Systems and network support</li>
-              <li>Documentation and user communication</li>
-              <li>Operational reliability</li>
-            </ul>
-          </article>
+            <p>Communication systems, IoT, and networks — research engineering at CISNR and hands-on optical fiber work.</p>
+            <span class="go">Open portfolio <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="portfolio-card" href="marketing/">
+            <span class="card-key">B / MARKETING</span>
+            <h3>Marketing</h3>
+            <p>Meta ads, media buying, and ecommerce growth — 50 completed jobs, 100% Job Success Score, real 5.0 client reviews.</p>
+            <span class="go">Open portfolio <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="portfolio-card" href="academic/">
+            <span class="card-key">C / ACADEMIC</span>
+            <h3>Academic</h3>
+            <p>Research, credentials, and scholarships — education, research engineering, and documents on file.</p>
+            <span class="go">Open portfolio <span aria-hidden="true">→</span></span>
+          </a>
         </div>
       </div>
-    </section>
-
-    <section class="section" id="background">
-      <p class="section-label">04 / BACKGROUND</p>
-      <div>
-        <h2>Built across<br>disciplines.</h2>
-        <div class="path">
-          <article class="path-card">
-            <div class="date">2018—2022</div>
-            <h3>UET Peshawar</h3>
-            <p>B.Eng in Electrical Engineering, Communication major. CGPA 3.03. PEC registered.</p>
-          </article>
-          <article class="path-card">
-            <div class="date">CURRENT FOCUS</div>
-            <h3>Growth + operations</h3>
-            <p>Applying engineering discipline to paid social, ecommerce decision-making, and technical operations.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="profile-statement" aria-label="Working philosophy">
-      <blockquote>“Measure clearly. Diagnose the constraint. Improve the system.”</blockquote>
-      <aside>That principle works equally well in an ad account, a COD operation, a network, or an engineering problem.</aside>
     </section>
 
     <footer>
