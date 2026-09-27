@@ -1,81 +1,409 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Alien Abduction Order Form</title>
-	<link href="css/forms.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="Bilal Ahmad — electrical engineer, performance marketer, ecommerce operator, and IT professional." />
+  <link rel="icon" href="data:," />
+  <title>Bilal Ahmad · Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f3f1eb;
+      --surface: #ffffff;
+      --ink: #161a1d;
+      --muted: #565d60;
+      --line: #c9c9c1;
+      --soft: #e7e4dc;
+      --accent: #d94b2b;
+      --accent-ink: #8b210d;
+      --signal: #0a6b58;
+      --shadow: rgba(29, 31, 32, .08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111517;
+        --surface: #181d20;
+        --ink: #f2f0e9;
+        --muted: #b5bab8;
+        --line: #3b4345;
+        --soft: #242b2d;
+        --accent: #ff7758;
+        --accent-ink: #ffad98;
+        --signal: #61cbb4;
+        --shadow: rgba(0, 0, 0, .28);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Libre Franklin", sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .page {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 34px 0 72px;
+    }
+    .rail {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .rail strong { color: var(--ink); font-weight: 500; }
+    .rail nav { display: flex; flex-wrap: wrap; gap: 16px; justify-content: flex-end; }
+    .rail a { text-decoration: none; }
+    .rail a:hover { color: var(--accent); }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr);
+      gap: 48px;
+      align-items: end;
+      min-height: 510px;
+      padding: 70px 0 54px;
+      border-bottom: 1px solid var(--line);
+    }
+    .index {
+      margin: 0 0 24px;
+      font-family: "IBM Plex Mono", monospace;
+      color: var(--accent);
+      font-size: 13px;
+    }
+    h1 {
+      max-width: 790px;
+      margin: 0;
+      font-size: clamp(48px, 8.2vw, 106px);
+      line-height: .91;
+      letter-spacing: -.065em;
+      font-weight: 800;
+    }
+    h1 .role {
+      display: block;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: .42em;
+      line-height: 1.05;
+      letter-spacing: -.045em;
+      font-weight: 500;
+    }
+    .hero-note {
+      position: relative;
+      padding: 26px 0 4px 28px;
+      border-left: 1px solid var(--line);
+    }
+    .hero-note::before {
+      content: "";
+      position: absolute;
+      left: -5px;
+      top: 0;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .hero-note p { margin: 0; font-size: 18px; line-height: 1.6; }
+    .hero-note .available {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 30px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      color: var(--signal);
+    }
+    .pulse { width: 8px; height: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 4px color-mix(in srgb, currentColor 16%, transparent); }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--line);
+    }
+    .metric {
+      min-height: 130px;
+      padding: 24px 20px 24px 0;
+      border-right: 1px solid var(--line);
+    }
+    .metric + .metric { padding-left: 24px; }
+    .metric:last-child { border-right: 0; }
+    .metric b { display: block; font-size: clamp(25px, 3vw, 40px); letter-spacing: -.04em; line-height: 1.1; }
+    .metric span { display: block; margin-top: 9px; color: var(--muted); font-size: 13px; }
+    section { scroll-margin-top: 22px; }
+    .section {
+      display: grid;
+      grid-template-columns: 210px minmax(0, 1fr);
+      gap: 48px;
+      padding: 68px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .section-label {
+      position: sticky;
+      top: 20px;
+      align-self: start;
+      margin: 0;
+      font-family: "IBM Plex Mono", monospace;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 500;
+    }
+    h2 { margin: 0 0 30px; font-size: clamp(30px, 4vw, 54px); line-height: 1; letter-spacing: -.045em; }
+    .lead { max-width: 730px; margin: 0 0 40px; color: var(--muted); font-size: 20px; }
+    .work-list { border-top: 1px solid var(--line); }
+    .work-item {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 34px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .work-item:last-child { border-bottom: 0; }
+    .work-key { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
+    .work-copy h3 { margin: -3px 0 8px; font-size: 22px; letter-spacing: -.025em; }
+    .work-copy p { max-width: 720px; margin: 0; color: var(--muted); }
+    .work-copy a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      color: var(--accent-ink);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      font-weight: 500;
+      text-underline-offset: 4px;
+    }
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+    .skill-block { min-height: 250px; padding: 28px 28px 30px 0; border-bottom: 1px solid var(--line); }
+    .skill-block:nth-child(odd) { border-right: 1px solid var(--line); }
+    .skill-block:nth-child(even) { padding-left: 28px; }
+    .skill-block h3 { margin: 0 0 20px; font-size: 22px; }
+    .skill-block ul { display: grid; gap: 11px; margin: 0; padding: 0; list-style: none; color: var(--muted); }
+    .skill-block li { position: relative; padding-left: 18px; }
+    .skill-block li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+    .path {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--line);
+    }
+    .path-card { padding: 28px 28px 0 0; }
+    .path-card + .path-card { padding-left: 28px; border-left: 1px solid var(--line); }
+    .path-card .date { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--accent); }
+    .path-card h3 { margin: 12px 0 8px; font-size: 25px; letter-spacing: -.03em; }
+    .path-card p { margin: 0; color: var(--muted); }
+    .profile-statement {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(230px, .5fr);
+      gap: 40px;
+      align-items: end;
+      padding: 62px 0 14px;
+    }
+    .profile-statement blockquote { margin: 0; font-size: clamp(27px, 4vw, 49px); line-height: 1.15; letter-spacing: -.045em; font-weight: 600; }
+    .profile-statement aside { padding-left: 24px; border-left: 1px solid var(--line); color: var(--muted); }
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 62px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-family: "IBM Plex Mono", monospace;
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .top-link { text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    @media (max-width: 780px) {
+      .page { width: min(100% - 28px, 680px); padding-top: 22px; }
+      .rail { align-items: flex-start; }
+      .rail nav { gap: 8px 14px; max-width: 215px; }
+      .hero { grid-template-columns: 1fr; gap: 44px; min-height: auto; padding: 54px 0 44px; }
+      h1 { font-size: clamp(51px, 15vw, 82px); }
+      .hero-note { margin-left: 3px; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .metric { min-height: 112px; border-bottom: 1px solid var(--line); }
+      .metric:nth-child(2) { border-right: 0; }
+      .metric:nth-child(3), .metric:nth-child(4) { border-bottom: 0; }
+      .metric:nth-child(3) { padding-left: 0; }
+      .section { grid-template-columns: 1fr; gap: 20px; padding: 54px 0; }
+      .section-label { position: static; }
+      .work-item { grid-template-columns: 1fr; gap: 9px; }
+      .skills-grid, .path { grid-template-columns: 1fr; }
+      .skill-block:nth-child(odd) { border-right: 0; }
+      .skill-block:nth-child(even) { padding-left: 0; }
+      .path-card { padding: 26px 0; border-bottom: 1px solid var(--line); }
+      .path-card + .path-card { padding-left: 0; border-left: 0; border-bottom: 0; }
+      .profile-statement { grid-template-columns: 1fr; }
+      .profile-statement aside { max-width: 420px; }
+      footer { align-items: flex-end; }
+    }
+    @media (max-width: 420px) {
+      .rail strong { max-width: 92px; line-height: 1.3; }
+      .metrics { grid-template-columns: 1fr; }
+      .metric, .metric + .metric { padding: 20px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .metric:nth-child(3) { border-bottom: 1px solid var(--line); }
+      .metric:last-child { border-bottom: 0; }
+      .skill-block { min-height: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
 </head>
-<body>
-	<div class="wrapper">
-		<section>
-			<h1>Alien Abduction Order Form</h1>
-			<p>Fill out the form below to place an order for an alien abduction by one of our fine UFOs.</p>
-		<form action="https://e3vwdl4bpd.execute-api.us-west-2.amazonaws.com/default/API2SES" method="POST">
-			<input type="hidden" name="send_to" value="bilalkpk7@gmail.com">
-			<fieldset>
-				<legend>Your contact information</legend>
-				<label for="name">Your name</label> 
-					<input type="text" id="name" name="name">
-				<label for="phone">Phone number</label>
-					<input type="tel" id="phone" name="phone" placeholder="Don't forget the area code">
-				<label for="email">Email</label>
-					<input type="email" id="email" name="email">
-			</fieldset>
-			<fieldset>
-				<legend>About your abduction </legend>
-				<label for="date">Requested  date</label>
-				<input type="date" id="date" name="date">
-				<label for="qty">How many people would you like abducted?</label>
-				<input type="number" id="qty" name="qty" min="1" max="10">
-				<p>What type of UFO do you prefer?</p>
-				<label>
-					<input type="radio" name="ufotype" value="classic" checked>
-					Classic oval UFO
-				</label>
-				<label>
-					<input type="radio" name="ufotype" value="starwars">
-					Star Wars-style Imperial cruiser
-				</label>
-				<label>
-					<input type="radio" name="ufotype" value="battlestar">
-					Battlestar Galactica-style Viper
-				</label>
-				<label>
-					<input type="radio" name="ufotype" value="borg">
-					Borg-style cube
-				</label>
-				<label for="abtype" class="abtype">What type of abduction experience do you want?</label>
-					<select id="abtype" name="abtype">
-						<option selected>Select One..</option>
-						<option value="tour">Tour of the solar system</option>
-						<option value="dinner">Alien dinner and discussion</option>
-						<option value="dance">Alien dance lessons</option>
-						<option value="whales">Whale watching</select>
-					</select>
-				<label for="comments" class="comments">Special requests:</label>
-				<textarea id="comments" name="comments"></textarea>
-				<label>
-					<input type="checkbox" value="subscribe" name="subscribe" checked>Add me to your emial list!
-				</label>
-			</fieldset>
-			<button type="submit">Order your abduction experience!!</button>
-			</form>				
-		</section>
-		<aside>
-			<h3>Our Location</h3>
-			<address>
-				Frontend Masters &middot;
-				60 South 6th Street &middot;
-				Suite 3625 &middot;
-				Minneapolis, MN 55402
-			</address>
-		</aside>
-	</div>
-	<script src="js/forms.js"></script>
+<body id="top">
+  <main class="page">
+    <div class="rail" aria-label="Page navigation">
+      <strong>Bilal Ahmad</strong>
+      <nav>
+        <a href="#work">Selected work</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#background">Background</a>
+      </nav>
+    </div>
+
+    <header class="hero">
+      <div>
+        <p class="index">01 / PROFILE</p>
+        <h1>
+          Engineer by training.
+          <span class="role">Performance marketer, ecommerce operator &amp; IT professional.</span>
+        </h1>
+      </div>
+      <div class="hero-note">
+        <p>I bring a systems mindset to growth: clear measurement, practical execution, and an engineer’s habit of tracing every outcome back to its cause.</p>
+        <div class="available"><span class="pulse" aria-hidden="true"></span> Peshawar, Pakistan · open to remote work</div>
+      </div>
+    </header>
+
+    <div class="metrics" aria-label="Profile highlights">
+      <div class="metric"><b>4</b><span>connected disciplines</span></div>
+      <div class="metric"><b>3 yrs</b><span>IT work experience</span></div>
+      <div class="metric"><b>B.Eng</b><span>Electrical Engineering</span></div>
+      <div class="metric"><b>PEC</b><span>registered engineer</span></div>
+    </div>
+
+    <section class="section" id="work">
+      <p class="section-label">02 / SELECTED WORK</p>
+      <div>
+        <h2>Practical systems,<br>not slideware.</h2>
+        <p class="lead">My work sits where acquisition, operations, and technical problem-solving meet.</p>
+        <div class="work-list">
+          <article class="work-item">
+            <div class="work-key">ECOMMERCE<br>OPERATIONS</div>
+            <div class="work-copy">
+              <h3>COD cash-flow control for a Shopify store</h3>
+              <p>Built an operating view that connects orders, courier settlements, stock purchases, ad spend, returns, and agent performance—making the gap between reported profit and cash visible.</p>
+              <a href="https://blumora.pk/pages/hismile-offer" target="_blank" rel="noopener noreferrer">View offer page <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="work-item">
+            <div class="work-key">META ADS<br>&amp; CREATIVE</div>
+            <div class="work-copy">
+              <h3>Full-funnel paid social thinking</h3>
+              <p>Campaign structure, audience and creative testing, ad copy, offer framing, and performance diagnosis across CPM, CTR, CPC, cost per result, and ROAS.</p>
+            </div>
+          </article>
+          <article class="work-item">
+            <div class="work-key">ENGINEERING<br>&amp; IOT</div>
+            <div class="work-copy">
+              <h3>Communication systems and connected devices</h3>
+              <p>Engineering foundation across communication systems, control systems, and IoT, including an academic CISNR project built around an E. coli monitoring use case.</p>
+            </div>
+          </article>
+          <article class="work-item">
+            <div class="work-key">IT<br>SUPPORT</div>
+            <div class="work-copy">
+              <h3>Technical support with an operator’s mindset</h3>
+              <p>Three years of IT work experience, combining structured troubleshooting, clear communication, and reliable follow-through.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="capabilities">
+      <p class="section-label">03 / CAPABILITIES</p>
+      <div>
+        <h2>One operator.<br>Four lenses.</h2>
+        <div class="skills-grid">
+          <article class="skill-block">
+            <h3>Paid social</h3>
+            <ul>
+              <li>Meta campaign structure</li>
+              <li>Creative angles and ad copy</li>
+              <li>Testing plans and performance analysis</li>
+              <li>CPM, CTR, CPC, CPA and ROAS diagnosis</li>
+            </ul>
+          </article>
+          <article class="skill-block">
+            <h3>Ecommerce</h3>
+            <ul>
+              <li>Shopify offer and product-page thinking</li>
+              <li>COD order economics</li>
+              <li>Courier payout and return tracking</li>
+              <li>Inventory, agent and cash reconciliation</li>
+            </ul>
+          </article>
+          <article class="skill-block">
+            <h3>Engineering</h3>
+            <ul>
+              <li>Communication systems</li>
+              <li>Control systems</li>
+              <li>IoT systems</li>
+              <li>Structured technical analysis</li>
+            </ul>
+          </article>
+          <article class="skill-block">
+            <h3>IT</h3>
+            <ul>
+              <li>Technical troubleshooting</li>
+              <li>Systems and network support</li>
+              <li>Documentation and user communication</li>
+              <li>Operational reliability</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="background">
+      <p class="section-label">04 / BACKGROUND</p>
+      <div>
+        <h2>Built across<br>disciplines.</h2>
+        <div class="path">
+          <article class="path-card">
+            <div class="date">2018—2022</div>
+            <h3>UET Peshawar</h3>
+            <p>B.Eng in Electrical Engineering, Communication major. CGPA 3.03. PEC registered.</p>
+          </article>
+          <article class="path-card">
+            <div class="date">CURRENT FOCUS</div>
+            <h3>Growth + operations</h3>
+            <p>Applying engineering discipline to paid social, ecommerce decision-making, and technical operations.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile-statement" aria-label="Working philosophy">
+      <blockquote>“Measure clearly. Diagnose the constraint. Improve the system.”</blockquote>
+      <aside>That principle works equally well in an ad account, a COD operation, a network, or an engineering problem.</aside>
+    </section>
+
+    <footer>
+      <span>Bilal Ahmad · Peshawar, Pakistan</span>
+      <a class="top-link" href="#top">Back to top ↑</a>
+    </footer>
+  </main>
 </body>
 </html>
-
-
-
-
-
