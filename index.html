@@ -189,6 +189,68 @@
     }
     .portfolio-card:hover h3 { color: var(--accent); }
     .portfolio-card:hover .go { text-decoration: underline; }
+    .project-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 36px;
+    }
+    .project-head h2 { margin-bottom: 0; }
+    .project-summary { margin: 0; color: var(--muted); font-size: 18px; }
+    .project-spec {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 34px;
+    }
+    .project-spec div { padding: 20px 22px 20px 0; border-right: 1px solid var(--line); }
+    .project-spec div + div { padding-left: 22px; }
+    .project-spec div:last-child { border-right: 0; }
+    .project-spec b { display: block; margin-bottom: 6px; font-size: 18px; letter-spacing: -.025em; }
+    .project-spec span { color: var(--muted); font-size: 13px; }
+    .project-visuals {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+      gap: 18px;
+    }
+    .project-visuals figure { margin: 0; min-width: 0; }
+    .project-visuals img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-height: 430px;
+      object-fit: contain;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .project-visuals figcaption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+    .project-notes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 36px;
+    }
+    .project-notes h3 { margin: 0 0 10px; font-size: 20px; }
+    .project-notes p { margin: 0; color: var(--muted); }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 28px;
+      color: var(--accent-ink);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 13px;
+      font-weight: 500;
+      text-underline-offset: 4px;
+    }
     footer {
       display: flex;
       justify-content: space-between;
@@ -215,6 +277,12 @@
       .metric:nth-child(3) { padding-left: 0; }
       .section { grid-template-columns: 1fr; gap: 20px; padding: 54px 0; }
       .section-label { position: static; }
+      .project-head { grid-template-columns: 1fr; gap: 18px; }
+      .project-spec { grid-template-columns: 1fr; }
+      .project-spec div, .project-spec div + div { padding: 18px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .project-spec div:last-child { border-bottom: 0; }
+      .project-visuals, .project-notes { grid-template-columns: 1fr; }
+      .project-visuals img { height: auto; max-height: none; }
       .portfolio-cards { grid-template-columns: 1fr; }
       .portfolio-card { border-right: 0; border-bottom: 1px solid var(--line); padding: 26px 0; }
       .portfolio-card + .portfolio-card { padding-left: 0; }
@@ -236,6 +304,7 @@
     <div class="rail" aria-label="Page navigation">
       <strong>Bilal Ahmad</strong>
       <nav>
+        <a href="#featured-project">Project 01</a>
         <a href="engineering/">Engineering</a>
         <a href="marketing/">Marketing</a>
         <a href="academic/">Academic</a>
@@ -263,8 +332,47 @@
       <div class="metric"><b>PEC</b><span>registered engineer</span></div>
     </div>
 
+    <section class="section" id="featured-project">
+      <p class="section-label">02 / FEATURED PROJECT</p>
+      <div>
+        <div class="project-head">
+          <h2>Digital Communication<br>System Simulator.</h2>
+          <p class="project-summary">A reproducible Monte Carlo model of a complete baseband link: seeded bit generation, Gray-coded modulation, AWGN transmission, hard-decision detection, and BER analysis against textbook theory.</p>
+        </div>
+
+        <div class="project-spec" aria-label="Project highlights">
+          <div><b>3 schemes</b><span>BPSK, QPSK and 16-QAM</span></div>
+          <div><b>0–10 dB</b><span>Eb/N0 sweep in 1 dB steps</span></div>
+          <div><b>≤ 0.056</b><span>maximum log₁₀ BER deviation from theory</span></div>
+        </div>
+
+        <div class="project-visuals">
+          <figure>
+            <img src="assets/ber-vs-snr.png" alt="BER versus Eb/N0 plot comparing simulated and theoretical results for BPSK, QPSK and 16-QAM">
+            <figcaption>SIMULATION 01 · BER curves track theory across the full sweep.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/constellations.png" alt="Clean and noisy constellation diagrams for BPSK, QPSK and 16-QAM">
+            <figcaption>SIMULATION 02 · Normalized clean and noisy constellations.</figcaption>
+          </figure>
+        </div>
+
+        <div class="project-notes">
+          <div>
+            <h3>What the model proves</h3>
+            <p>Gray-coded QPSK overlays BPSK at the bit level, while 16-QAM needs roughly 4 dB more Eb/N0 for the same BER in exchange for four bits per symbol.</p>
+          </div>
+          <div>
+            <h3>Engineering stack</h3>
+            <p>Python, NumPy, SciPy and Matplotlib, organized as separate source modules for bit generation, modulation, channel behavior, theory, simulation and plotting.</p>
+          </div>
+        </div>
+        <a class="project-link" href="https://github.com/bilal4web/digital-comm-simulator" target="_blank" rel="noopener noreferrer">View the code on GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
     <section class="section" id="portfolios">
-      <p class="section-label">02 / PORTFOLIOS</p>
+      <p class="section-label">03 / PORTFOLIOS</p>
       <div>
         <h2>Three lenses.<br>One operator.</h2>
         <p class="lead">Pick the portfolio written for your world.</p>
