@@ -181,6 +181,16 @@
     .work-copy li { position: relative; padding-left: 18px; }
     .work-copy li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
     .source-note { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-ink);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 13px;
+      font-weight: 500;
+      text-underline-offset: 4px;
+    }
     .skills-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
     .skill-block { min-height: 250px; padding: 28px 28px 30px 0; border-bottom: 1px solid var(--line); }
     .skill-block:nth-child(odd) { border-right: 1px solid var(--line); }
@@ -261,6 +271,7 @@
     <div class="rail" aria-label="Page navigation">
       <a class="home" href="../">← All portfolios</a>
       <nav>
+        <a href="#projects">Projects</a>
         <a href="#achievements">Achievements</a>
         <a href="#education">Education</a>
         <a href="#skills">Skills</a>
@@ -289,8 +300,17 @@
       <div class="metric"><b>3 yrs</b><span>IT work experience</span></div>
     </div>
 
+    <section class="section" id="projects">
+      <p class="section-label">02 / FEATURED PROJECT</p>
+      <div>
+        <h2>Digital Communication<br>System Simulator.</h2>
+        <p class="lead">A reproducible Monte Carlo model of a complete baseband link: seeded bit generation, Gray-coded BPSK, QPSK and 16-QAM, AWGN transmission, hard-decision detection, and BER analysis against textbook theory.</p>
+        <a class="project-link" href="https://github.com/bilal4web/digital-comm-simulator" target="_blank" rel="noopener noreferrer">View the code on GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
     <section class="section" id="achievements">
-      <p class="section-label">02 / KEY ACHIEVEMENTS</p>
+      <p class="section-label">03 / KEY ACHIEVEMENTS</p>
       <div>
         <h2>Built, integrated,<br>tested in the field.</h2>
         <div class="work-list">
@@ -325,7 +345,7 @@
     </section>
 
     <section class="section" id="education">
-      <p class="section-label">03 / EDUCATION</p>
+      <p class="section-label">04 / EDUCATION</p>
       <div>
         <h2>Formal<br>foundation.</h2>
         <div class="path">
@@ -344,7 +364,7 @@
     </section>
 
     <section class="section" id="skills">
-      <p class="section-label">04 / TECHNICAL SKILLS</p>
+      <p class="section-label">05 / TECHNICAL SKILLS</p>
       <div>
         <h2>Systems<br>thinking.</h2>
         <div class="skills-grid">
@@ -368,7 +388,7 @@
     </section>
 
     <section class="section" id="contact">
-      <p class="section-label">05 / CONTACT</p>
+      <p class="section-label">06 / CONTACT</p>
       <div>
         <h2>Get in<br>touch.</h2>
         <div class="contact-links">
