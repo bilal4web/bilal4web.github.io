@@ -181,6 +181,11 @@
     .work-copy li { position: relative; padding-left: 18px; }
     .work-copy li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
     .source-note { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); }
+    .project-entry + .project-entry {
+      margin-top: 48px;
+      padding-top: 48px;
+      border-top: 1px solid var(--line);
+    }
     .project-link {
       display: inline-flex;
       align-items: center;
@@ -301,11 +306,18 @@
     </div>
 
     <section class="section" id="projects">
-      <p class="section-label">02 / FEATURED PROJECT</p>
+      <p class="section-label">02 / PROJECTS</p>
       <div>
-        <h2>Digital Communication<br>System Simulator.</h2>
-        <p class="lead">A reproducible Monte Carlo model of a complete baseband link: seeded bit generation, Gray-coded BPSK, QPSK and 16-QAM, AWGN transmission, hard-decision detection, and BER analysis against textbook theory.</p>
-        <a class="project-link" href="https://github.com/bilal4web/digital-comm-simulator" target="_blank" rel="noopener noreferrer">View the code on GitHub <span aria-hidden="true">↗</span></a>
+        <article class="project-entry">
+          <h2>Digital Communication<br>System Simulator.</h2>
+          <p class="lead">A reproducible Monte Carlo model of a complete baseband link: seeded bit generation, Gray-coded BPSK, QPSK and 16-QAM, AWGN transmission, hard-decision detection, and BER analysis against textbook theory.</p>
+          <a class="project-link" href="https://github.com/bilal4web/digital-comm-simulator" target="_blank" rel="noopener noreferrer">View the code on GitHub <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="project-entry">
+          <h2>IoT Sensor-to-Cloud<br>Pipeline Simulator.</h2>
+          <p class="lead">Educational Python simulator of an end-to-end IoT data pipeline, inspired by the architecture of my CISNR E. coli rapid-detection kit work: synthetic sensor nodes (temperature/pH/turbidity) stream readings over a configurable lossy wireless link with ARQ retries, a gateway validates CRCs and deduplicates, and a mock cloud API ingests the data — with delivery-rate, latency, and data-integrity analysis. All data is synthetic; clearly labeled as a demonstration, not the actual CISNR system.</p>
+          <a class="project-link" href="https://github.com/bilal4web/iot-sensor-pipeline" target="_blank" rel="noopener noreferrer">View the code on GitHub <span aria-hidden="true">↗</span></a>
+        </article>
       </div>
     </section>
 
