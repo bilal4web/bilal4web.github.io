@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light dark" />
-  <meta name="description" content="Bilal Ahmad — electrical engineer, performance marketer, ecommerce operator, and IT professional." />
+  <meta name="description" content="Bilal Ahmad — electrical engineer, web developer, performance marketer, ecommerce operator, and IT professional." />
   <link rel="icon" href="data:," />
   <title>Bilal Ahmad · Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -165,7 +165,7 @@
     .lead { max-width: 730px; margin: 0 0 40px; color: var(--muted); font-size: 20px; }
     .portfolio-cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
     }
@@ -174,9 +174,10 @@
       padding: 34px 28px 32px 0;
       text-decoration: none;
       border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
-    .portfolio-card + .portfolio-card { padding-left: 28px; }
-    .portfolio-card:last-child { border-right: 0; }
+    .portfolio-card:nth-child(even) { padding-left: 28px; border-right: 0; }
+    .portfolio-card:nth-last-child(-n + 2) { border-bottom: 0; }
     .portfolio-card .card-key { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--accent); }
     .portfolio-card h3 { margin: 14px 0 10px; font-size: clamp(26px, 3vw, 34px); letter-spacing: -.03em; }
     .portfolio-card p { margin: 0 0 20px; color: var(--muted); }
@@ -189,6 +190,94 @@
     }
     .portfolio-card:hover h3 { color: var(--accent); }
     .portfolio-card:hover .go { text-decoration: underline; }
+    .web-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(230px, .75fr);
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 42px;
+    }
+    .web-intro h2 { margin-bottom: 0; }
+    .web-intro p { margin: 0; color: var(--muted); font-size: 18px; }
+    .service-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid var(--line);
+      margin-bottom: 46px;
+    }
+    .service-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      padding: 24px 26px 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .service-item:nth-child(even) { padding-left: 26px; }
+    .service-no { font-family: "IBM Plex Mono", monospace; color: var(--accent); font-size: 11px; }
+    .service-item h3 { margin: 0 0 6px; font-size: 20px; letter-spacing: -.025em; }
+    .service-item p { margin: 0; color: var(--muted); font-size: 14px; }
+    .web-subhead {
+      margin: 0 0 17px;
+      font-family: "IBM Plex Mono", monospace;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .stack-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 46px;
+    }
+    .stack-list span {
+      padding: 8px 11px;
+      background: var(--soft);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+    }
+    .web-projects { border-top: 1px solid var(--line); }
+    .web-project {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr) 128px;
+      gap: 24px;
+      align-items: start;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .web-project .project-type { font-family: "IBM Plex Mono", monospace; color: var(--muted); font-size: 11px; }
+    .web-project h3 { margin: 0 0 8px; font-size: 24px; letter-spacing: -.025em; }
+    .web-project p { max-width: 650px; margin: 0; color: var(--muted); }
+    .web-project a {
+      justify-self: end;
+      color: var(--accent-ink);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      font-weight: 500;
+      text-underline-offset: 4px;
+    }
+    .web-contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: center;
+      margin-top: 42px;
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .web-contact h3 { margin: 0 0 4px; font-size: 25px; letter-spacing: -.03em; }
+    .web-contact p { margin: 0; color: var(--muted); }
+    .contact-link {
+      display: inline-flex;
+      padding: 12px 16px;
+      background: var(--ink);
+      color: var(--bg);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .contact-link:hover { background: var(--accent); color: #fff; }
     .project-head {
       display: grid;
       grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
@@ -283,9 +372,15 @@
       .project-spec div:last-child { border-bottom: 0; }
       .project-visuals, .project-notes { grid-template-columns: 1fr; }
       .project-visuals img { height: auto; max-height: none; }
+      .web-intro { grid-template-columns: 1fr; gap: 18px; }
+      .service-list { grid-template-columns: 1fr; }
+      .service-item, .service-item:nth-child(even) { padding: 21px 0; }
+      .web-project { grid-template-columns: 1fr; gap: 9px; }
+      .web-project a { justify-self: start; }
+      .web-contact { grid-template-columns: 1fr; }
+      .contact-link { justify-self: start; }
       .portfolio-cards { grid-template-columns: 1fr; }
-      .portfolio-card { border-right: 0; border-bottom: 1px solid var(--line); padding: 26px 0; }
-      .portfolio-card + .portfolio-card { padding-left: 0; }
+      .portfolio-card, .portfolio-card:nth-child(even), .portfolio-card:nth-last-child(-n + 2) { border-right: 0; border-bottom: 1px solid var(--line); padding: 26px 0; }
       .portfolio-card:last-child { border-bottom: 0; }
       footer { align-items: flex-end; }
     }
@@ -305,6 +400,7 @@
       <strong>Bilal Ahmad</strong>
       <nav>
         <a href="#featured-project">Project 01</a>
+        <a href="#web-development">Web development</a>
         <a href="engineering/">Engineering</a>
         <a href="marketing/">Marketing</a>
         <a href="academic/">Academic</a>
@@ -316,7 +412,7 @@
         <p class="index">01 / PROFILE</p>
         <h1>
           Engineer by training.
-          <span class="role">Performance marketer, ecommerce operator &amp; IT professional.</span>
+          <span class="role">Web developer, performance marketer, ecommerce operator &amp; IT professional.</span>
         </h1>
       </div>
       <div class="hero-note">
@@ -326,7 +422,7 @@
     </header>
 
     <div class="metrics" aria-label="Profile highlights">
-      <div class="metric"><b>4</b><span>connected disciplines</span></div>
+      <div class="metric"><b>5</b><span>connected disciplines</span></div>
       <div class="metric"><b>3 yrs</b><span>IT work experience</span></div>
       <div class="metric"><b>B.Sc. EE</b><span>Electrical Engineering, UET Peshawar</span></div>
       <div class="metric"><b>PEC</b><span>registered engineer</span></div>
@@ -371,11 +467,85 @@
       </div>
     </section>
 
-    <section class="section" id="portfolios">
-      <p class="section-label">03 / PORTFOLIOS</p>
+    <section class="section" id="web-development">
+      <p class="section-label">03 / WEB DEVELOPMENT</p>
       <div>
-        <h2>Three lenses.<br>One operator.</h2>
-        <p class="lead">Pick the portfolio written for your world.</p>
+        <div class="web-intro">
+          <h2>Websites built to<br>move a business.</h2>
+          <p>I build the pages, stores, and follow-up systems that turn traffic into enquiries and orders, with the marketing journey considered from the first wireframe.</p>
+        </div>
+
+        <div class="service-list" aria-label="Web development services">
+          <article class="service-item">
+            <span class="service-no">01</span>
+            <div>
+              <h3>Business websites</h3>
+              <p>Responsive sites with clear information architecture, focused messaging, and a straightforward path to contact.</p>
+            </div>
+          </article>
+          <article class="service-item">
+            <span class="service-no">02</span>
+            <div>
+              <h3>Ecommerce &amp; Shopify</h3>
+              <p>Store structure, product and offer pages, conversion flows, and the practical details needed to start selling.</p>
+            </div>
+          </article>
+          <article class="service-item">
+            <span class="service-no">03</span>
+            <div>
+              <h3>Landing pages</h3>
+              <p>Campaign pages aligned with the ad promise, built around one audience, one offer, and one measurable action.</p>
+            </div>
+          </article>
+          <article class="service-item">
+            <span class="service-no">04</span>
+            <div>
+              <h3>CRM &amp; funnel setup</h3>
+              <p>GoHighLevel pipelines, forms, lead routing, and follow-up workflows that connect acquisition with sales.</p>
+            </div>
+          </article>
+        </div>
+
+        <p class="web-subhead">WORKING STACK</p>
+        <div class="stack-list" aria-label="Web development technology stack">
+          <span>Next.js</span><span>Vercel</span><span>Webflow</span><span>Shopify</span><span>GoHighLevel</span><span>Cloudflare</span><span>Netlify</span><span>Python</span><span>SQL</span>
+        </div>
+
+        <p class="web-subhead">SELECTED WORK</p>
+        <div class="web-projects">
+          <article class="web-project">
+            <span class="project-type">ECOMMERCE SYSTEM</span>
+            <div>
+              <h3>Durrani Traders storefront portfolio</h3>
+              <p>Regional commerce deployments across blumora.pk, bloomora.pk, and coscart.pk, covering storefront structure, product and offer pages, responsive conversion flows, platform deployment, and domain/DNS configuration.</p>
+            </div>
+            <a href="https://blumora.pk/" target="_blank" rel="noopener noreferrer">View live store ↗</a>
+          </article>
+          <article class="web-project">
+            <span class="project-type">PORTFOLIO SITE</span>
+            <div>
+              <h3>Bilal Ahmad portfolio</h3>
+              <p>A responsive multi-track portfolio that organizes engineering, marketing, academic, and web-development work into one clear professional home.</p>
+            </div>
+            <a href="https://bilal4web.github.io/" target="_blank" rel="noopener noreferrer">View live site ↗</a>
+          </article>
+        </div>
+
+        <div class="web-contact">
+          <div>
+            <h3>Need a site that supports the sale?</h3>
+            <p>Share the offer, audience, and current setup. I’ll map the most useful build.</p>
+          </div>
+          <a class="contact-link" href="mailto:belal.dourani@gmail.com">Start a project →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="portfolios">
+      <p class="section-label">04 / PORTFOLIOS</p>
+      <div>
+        <h2>Four lenses.<br>One operator.</h2>
+        <p class="lead">Choose the discipline closest to the work you need.</p>
         <div class="portfolio-cards">
           <a class="portfolio-card" href="engineering/">
             <span class="card-key">A / ENGINEERING</span>
@@ -389,8 +559,14 @@
             <p>Meta ads, media buying, and ecommerce growth — 50 completed jobs, 100% Job Success Score, real 5.0 client reviews.</p>
             <span class="go">Open portfolio <span aria-hidden="true">→</span></span>
           </a>
+          <a class="portfolio-card" href="#web-development">
+            <span class="card-key">C / WEB DEVELOPMENT</span>
+            <h3>Web development</h3>
+            <p>Business websites, ecommerce stores, campaign landing pages, and CRM-backed lead funnels.</p>
+            <span class="go">View services &amp; work <span aria-hidden="true">→</span></span>
+          </a>
           <a class="portfolio-card" href="academic/">
-            <span class="card-key">C / ACADEMIC</span>
+            <span class="card-key">D / ACADEMIC</span>
             <h3>Academic</h3>
             <p>Research, credentials, and scholarships — education, research engineering, and documents on file.</p>
             <span class="go">Open portfolio <span aria-hidden="true">→</span></span>
